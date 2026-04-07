@@ -1,0 +1,29 @@
+venv/
+python/
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+
+# Logs
+logs
+*.log
+
+# Build folders
+dist/
+build/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# React specific
+Front_end/React.js_files/my-app/node_modules/
+
+# Backend specific
+back_end/node_modules/

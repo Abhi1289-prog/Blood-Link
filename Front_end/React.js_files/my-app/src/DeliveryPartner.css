@@ -1,0 +1,135 @@
+/* General Styles */
+.delivery-partner-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 40px auto;
+  padding: 30px;
+  max-width: 900px;
+  background-color: #f1fdfb;
+  border-radius: 12px;
+  color: #004d40;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings */
+.h14, h3 {
+  text-align: center;
+  color: #2e2e2e;
+  margin-bottom: 20px;
+}
+
+.h14 {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 22px;
+  color: #4a4a4a;
+}
+
+/* Status Message */
+.status-message {
+  background-color: #d0f0ec;
+  padding: 12px 18px;
+  margin-top: 25px;
+  border-radius: 6px;
+  color: #00796b;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  border: 1px solid #b2dfdb;
+}
+
+/* Common Form Card Style */
+.registration-form,
+.collect-section,
+.delivery-section {
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  margin-top: 30px;
+  transition: transform 0.3s ease;
+}
+
+.registration-form:hover,
+.collect-section:hover,
+.delivery-section:hover {
+  transform: scale(1.01);
+}
+
+/* Form Group */
+.form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+label {
+  font-size: 16px;
+  color: #333;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+/* Checkbox */
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  cursor: pointer;
+  accent-color: #00796b;
+}
+
+/* Buttons */
+.buttons {
+  padding: 12px 24px;
+  background-color: #00796b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 600;
+  display: block;
+  width: 60%;
+  margin: 30px auto 10px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.buttons:hover {
+  background-color: #004d40;
+  transform: translateY(-2px);
+}
+
+.buttons:disabled {
+  background-color: #b0bec5;
+  cursor: not-allowed;
+}
+
+/* Icon in Button */
+.buttons .fa-car {
+  margin-right: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .delivery-partner-container {
+    padding: 20px;
+  }
+
+  .buttons {
+    width: 80%;
+    font-size: 16px;
+  }
+
+  .form-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  label {
+    margin-bottom: 5px;
+  }
+}

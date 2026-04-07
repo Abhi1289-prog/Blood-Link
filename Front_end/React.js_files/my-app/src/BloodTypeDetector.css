@@ -1,0 +1,299 @@
+/* BloodTypeDetector.css */
+
+.blood-type-detector {
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+   min-height:100px; 
+  }
+  
+  .detector-container {
+     display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 24px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .detector-title {
+    
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 24px;
+    text-align: center;
+    color: #222;
+  }
+  
+  .scanner-section {
+    width: 100%;
+    margin-bottom: 32px;
+  }
+  
+  .scanner-box {
+    border: 2px solid;
+    border-radius: 8px;
+    padding: 32px;
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    transition: all 0.3s ease;
+  }
+  
+  .scanner-box.idle {
+    border-color: #d1d5db;
+  }
+  
+  .scanner-box.scanning {
+    border-color: #3b82f6;
+    animation: pulse 2s infinite;
+  }
+  
+  .scanner-box.success {
+    border-color: #10b981;
+  }
+  
+  .scanner-box.error {
+    border-color: #ef4444;
+  }
+  
+  .scanner-icon {
+    margin-bottom: 16px;
+  }
+  
+  .scanner-icon.idle {
+    color: #9ca3af;
+  }
+  
+  .scanner-icon.scanning {
+    color: #3b82f6;
+    animation: pulse 2s infinite;
+  }
+  
+  .scanner-text {
+    text-align: center;
+    margin-bottom: 0;
+  }
+  
+  .spinner-container {
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .spinner {
+    animation: spin 1s linear infinite;
+    color: #3b82f6;
+  }
+  
+  .fingerprint-container {
+    width: 100%;
+  }
+  
+  .processing-status {
+    text-align: center;
+    margin-top: 16px;
+  }
+  
+  .status-subtitle {
+    font-size: 14px;
+    color: #6b7280;
+    margin-top: 4px;
+  }
+  
+  .fingerprint-visualization {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+  }
+  
+  .fingerprint-grid {
+    display: grid;
+    grid-template-columns: repeat(20, 4px);
+    grid-gap: 0;
+  }
+  
+  .fingerprint-cell {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+  }
+  
+  .fingerprint-cell.ridge {
+    background-color: #333;
+  }
+  
+  .fingerprint-cell.valley {
+    background-color: #f5f5f5;
+  }
+  
+  .result-container {
+    text-align: center;
+  }
+  
+  .success-icon-container {
+    margin-bottom: 16px;
+  }
+  
+  .success-icon {
+    color: #10b981;
+  }
+  
+  .error-icon {
+    color: #ef4444;
+    margin-bottom: 12px;
+  }
+  
+  .blood-type-result {
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .blood-icon {
+    color: #dc2626;
+    margin-right: 8px;
+  }
+  
+  .blood-type {
+    font-size: 36px;
+    font-weight: bold;
+  }
+  
+  .result-text {
+    font-size: 14px;
+    color: #4b5563;
+  }
+  
+  .quality-score {
+    font-size: 12px;
+    color: #6b7280;
+    margin-top: 8px;
+  }
+  
+  .error-container {
+    text-align: center;
+  }
+  
+  .error-message {
+    color: #dc2626;
+  }
+  
+  .controls {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .scan-button {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 500;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .scan-button:hover:not(.disabled) {
+    background-color: #1d4ed8;
+  }
+  
+  .scan-button.disabled {
+    background-color: #d1d5db;
+    color: #6b7280;
+    cursor: not-allowed;
+  }
+  
+  .reset-button {
+    margin-left: 16px;
+    padding: 12px 24px;
+    background-color: #e5e7eb;
+    color: #1f2937;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .reset-button:hover {
+    background-color: #d1d5db;
+  }
+  
+  .disclaimer {
+    margin-top: 32px;
+    padding: 16px;
+    background-color: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #4b5563;
+  }
+  
+  .disclaimer-title {
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  
+  .disclaimer-text {
+    margin: 0;
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.6;
+    }
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .back {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%);
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .back:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .feedback-container {
+      margin: 2rem 1rem;
+      padding: 1.5rem;
+    }
+  
+    .back {
+      padding: 0.6rem 1rem;
+      font-size: 0.9rem;
+    }
+  }

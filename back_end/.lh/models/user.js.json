@@ -1,0 +1,18 @@
+{
+    "sourceFile": "models/user.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1763275319325,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1763275319325,
+            "name": "Commit-0",
+            "content": "const { default: mongoose, models } = require(\"mongoose\");\r\nconst bcrypt=require('bcrypt');\r\n\r\nconst userSchema=mongoose.Schema({\r\nname:{\r\n    type:String,\r\n    trim:true,\r\n    required:true\r\n},\r\nemail:{\r\n    type:String,\r\n    trim:true,\r\n    required:true,\r\n    unique:true\r\n},\r\npassword:{\r\n    type:String,\r\n    required:true\r\n},\r\nphone_number: {\r\n    type: String,\r\n    required: true,\r\n},\r\nusername:{\r\n    type:String,\r\n    trim:true,\r\n    unique:true,\r\n    required:true\r\n},\r\nhasPersonalDetails: {\r\n  type: Boolean,\r\n  default: false\r\n}\r\n});\r\nuserSchema.pre('save',async function(next){\r\n    if(this.isModified('password')){\r\n      this.password=await bcrypt.hash(this.password,10);\r\n    }\r\n    next();\r\n});\r\nuserSchema.methods.comparePassword=async function(password) {\r\n  const result=  await bcrypt.compare(password,this.password);\r\n    return result;\r\n}\r\nmodule.exports=mongoose.model(\"user\",userSchema);"
+        }
+    ]
+}

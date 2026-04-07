@@ -1,0 +1,189 @@
+.request-blood-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; /* 🔄 was center */
+  }
+  
+  .request-blood-container h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 1.5rem;
+  }
+  
+  .request-blood-container h3 {
+    color: #4c85f0;
+    margin-bottom: 1rem;
+    font-size: 18px;
+  }
+  
+  .request-blood-container form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; /* 🔄 added for cleaner layout */
+  }
+  
+  .form-section {
+    margin-bottom: 25px;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+    width: 100%;
+  }
+  
+  .request-blood-container input[type="text"],
+  .request-blood-container input[type="tel"],
+  .request-blood-container input[type="number"],
+  .request-blood-container input[type="date"],
+  .request-blood-container select,
+  .request-blood-container textarea {
+    width: 100%; /* 🔄 changed from 90% for full alignment */
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  
+  .request-blood-container textarea {
+    height: 100px;
+    resize: vertical;
+  }
+  
+  .select-container,
+  .number-input,
+  .date-input {
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; /* 🔄 was center */
+  }
+  
+  .select-container label,
+  .number-input label,
+  .date-input label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .radio-group {
+    margin: 15px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* 🔄 was center for better label alignment */
+  }
+  
+  .radio-group p {
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 8px;
+  }
+  
+  .radio-group label {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+    cursor: pointer;
+    width: 100%; /* 🔄 was 80% */
+  }
+  
+  .radio-group input {
+    margin-right: 8px;
+  }
+  
+  .submit-button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    width: 100%; /* 🔄 was 75% for consistency */
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.2s;
+    align-self: center; /* keep button centered */
+  }
+  
+  .submit-button:hover {
+    background-color: #c0392b;
+  }
+  
+  /* Urgency level styles */
+  .radio-group label:nth-child(2) input:checked ~ * {
+    color: #e74c3c;
+  }
+  
+  .radio-group label:nth-child(3) input:checked ~ * {
+    color: #f39c12;
+  }
+  
+  .radio-group label:nth-child(4) input:checked ~ * {
+    color: #3498db;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 600px) {
+    .request-blood-container {
+      padding: 1rem;
+      margin: 0 10px;
+    }
+  
+    .form-section {
+      padding: 10px;
+    }
+  
+    .request-blood-container input[type="text"],
+    .request-blood-container input[type="tel"],
+    .request-blood-container input[type="number"],
+    .request-blood-container input[type="date"],
+    .request-blood-container select,
+    .request-blood-container textarea {
+      width: 100%; /* maintain full width on mobile too */
+    }
+  }
+  
+  .back {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%);
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .back:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  @media (max-width: 768px) {
+    .feedback-container {
+      margin: 2rem 1rem;
+      padding: 1.5rem;
+    }
+  
+    .back {
+      padding: 0.6rem 1rem;
+      font-size: 0.9rem;
+    }
+  }
+  

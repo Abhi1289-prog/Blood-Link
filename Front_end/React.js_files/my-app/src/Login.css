@@ -1,0 +1,386 @@
+/* Login.css */
+
+/* Global styles for the login page */
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif; /* Using Inter font as per instructions */
+    overflow: hidden; /* Prevent scrollbars from background animations */
+    background-color: #f8f8f8; /* Fallback */
+}
+
+/* Main container for the login page */
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a0000 25%, #330000 50%, #1a0000 75%, #0a0a0a 100%);
+    overflow: hidden;
+    color: #e0e0e0; /* Light text for dark background */
+}
+
+/* Animated blood background */
+.blood-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 10% 20%, rgba(255, 0, 0, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(255, 0, 0, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(255, 0, 0, 0.03) 0%, transparent 60%);
+    animation: pulseBackground 15s ease-in-out infinite alternate;
+}
+
+/* Blood drip animations */
+.blood-drops-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none; /* Allows clicks to pass through */
+    overflow: hidden;
+}
+
+.blood-drop {
+    position: absolute;
+    background: linear-gradient(to bottom, #dc2626, #b91c1c);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    box-shadow: 0 0 15px rgba(220, 38, 38, 0.6);
+    filter: blur(0.5px); /* Soften the edges */
+    opacity: 0;
+    animation: bloodDrip 8s ease-in-out infinite;
+}
+
+.blood-drop.drop-1 {
+    width: 25px;
+    height: 35px;
+    left: 10%;
+    top: -50px;
+    animation-delay: 0s;
+    animation-duration: 7s;
+}
+
+.blood-drop.drop-2 {
+    width: 30px;
+    height: 40px;
+    left: 30%;
+    top: -80px;
+    animation-delay: 2s;
+    animation-duration: 9s;
+}
+
+.blood-drop.drop-3 {
+    width: 20px;
+    height: 30px;
+    left: 70%;
+    top: -30px;
+    animation-delay: 4s;
+    animation-duration: 6s;
+}
+
+.blood-drop.drop-4 {
+    width: 35px;
+    height: 45px;
+    left: 85%;
+    top: -100px;
+    animation-delay: 6s;
+    animation-duration: 8s;
+}
+
+/* Login form container */
+.login-form-container {
+    background: rgba(255, 255, 255, 0.1); /* Slightly transparent white for glass effect */
+    backdrop-filter: blur(10px); /* Blur behind the form */
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5); /* Stronger shadow for depth */
+    text-align: center;
+    position: relative;
+    z-index: 1; /* Ensure form is above background elements */
+    width: 90%;
+    max-width: 400px;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+    overflow: hidden; /* For inner elements like splatter */
+}
+
+/* Header section in the form */
+.login-header {
+    margin-bottom: 30px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.login-title {
+    font-size: 2.5rem;
+    color: #ef4444; /* Brighter red for title */
+    margin: 0;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.6); /* Glowing effect */
+}
+
+.title-underline {
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(to right, #dc2626, #ef4444);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+/* Input field styling */
+.input-group {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.input-field {
+    width: calc(100% - 40px); /* Adjust for padding and icon */
+    padding: 15px 20px 15px 45px; /* Left padding for icon */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.08); /* Slightly visible input background */
+    color: #e0e0e0;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+.input-field::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.input-field:focus {
+    border-color: #dc2626; /* Red border on focus */
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5), 0 0 15px rgba(220, 38, 38, 0.5); /* Outer glow on focus */
+}
+
+.input-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ef4444; /* Icon color */
+    font-size: 1.2rem;
+    pointer-events: none; /* Do not interfere with input interaction */
+}
+
+/* Submit button styling */
+.login-button {
+    background: linear-gradient(45deg, #dc2626 0%, #ef4444 100%); /* Red gradient */
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(220, 38, 38, 0.4);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    overflow: hidden; /* For ripple effect */
+    position: relative;
+    z-index: 0;
+}
+
+.login-button:hover {
+    background: linear-gradient(45deg, #ef4444 0%, #ff6b6b 100%);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(220, 38, 38, 0.6);
+}
+
+.login-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    transition: all 0.6s ease-out;
+}
+
+.login-button:hover::before {
+    width: 200%;
+    height: 200%;
+    opacity: 1;
+    transition: all 0.6s ease-out;
+}
+
+.button-text {
+    position: relative;
+    z-index: 1;
+}
+
+.button-icon {
+    position: relative;
+    z-index: 1;
+}
+
+/* Footer elements */
+.login-footer {
+    height: 20px; /* Placeholder for visual element */
+    margin-top: 30px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 0 0 15px 15px;
+    box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.blood-splatter {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%) rotate(10deg);
+    width: 100px;
+    height: 80px;
+    background: rgba(220, 38, 38, 0.3);
+    border-radius: 50%;
+    filter: blur(15px);
+    opacity: 0.7;
+    animation: subtlePulse 5s ease-in-out infinite alternate;
+}
+
+/* Custom Message Box */
+.message-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.7);
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    max-width: 300px;
+    text-align: center;
+}
+
+.message-box.success {
+    background-color: #28a745; /* Green for success */
+}
+
+.message-box.error {
+    background-color: #dc3545; /* Red for error */
+}
+
+.message-box button {
+    background-color: #555;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.message-box button:hover {
+    background-color: #777;
+}
+
+
+/* Keyframe Animations */
+@keyframes bloodDrip {
+    0% {
+        transform: translateY(-100px) scale(0.5);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.7;
+        transform: translateY(0px) scale(1);
+    }
+    70% {
+        transform: translateY(calc(100vh - 150px)) scale(1);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(100vh) scale(0.3);
+        opacity: 0;
+    }
+}
+
+@keyframes pulseBackground {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes subtlePulse {
+    0% { transform: translateX(-50%) rotate(10deg) scale(1); opacity: 0.7; }
+    50% { transform: translateX(-50%) rotate(15deg) scale(1.05); opacity: 0.9; }
+    100% { transform: translateX(-50%) rotate(10deg) scale(1); opacity: 0.7; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .login-form-container {
+        padding: 30px;
+    }
+
+    .login-title {
+        font-size: 2rem;
+    }
+
+    .input-field {
+        padding: 12px 20px 12px 40px;
+        font-size: 0.95rem;
+    }
+
+    .input-icon {
+        font-size: 1rem;
+        left: 12px;
+    }
+
+    .login-button {
+        padding: 12px 25px;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-form-container {
+        padding: 25px;
+        border-radius: 15px;
+    }
+
+    .login-title {
+        font-size: 1.8rem;
+    }
+
+    .input-field {
+        padding: 10px 15px 10px 35px;
+        font-size: 0.9rem;
+    }
+
+    .input-icon {
+        font-size: 0.9rem;
+        left: 10px;
+    }
+
+    .login-button {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+
+    .blood-drop {
+        width: 15px;
+        height: 25px;
+    }
+
+    .blood-drop.drop-1 { left: 5%; }
+    .blood-drop.drop-2 { left: 25%; }
+    .blood-drop.drop-3 { left: 65%; }
+    .blood-drop.drop-4 { left: 90%; }
+}

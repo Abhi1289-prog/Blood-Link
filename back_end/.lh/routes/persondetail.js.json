@@ -1,0 +1,18 @@
+{
+    "sourceFile": "routes/persondetail.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1763299916094,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1763299916094,
+            "name": "Commit-0",
+            "content": "const express = require('express');\r\nconst {details, checkeligible, profile}=require('../controller/personaldetail');\r\nconst  authenticateToken = require('../middelwares/auth');\r\nconst {validatePersonalDetail,validateinfo}=require('../middelwares/validateuserinfo');\r\nconst router = express.Router();\r\nrouter.post('/PreBloodGroupForm',authenticateToken,validatePersonalDetail,validateinfo,details);\r\nrouter.post('/check-eligible',authenticateToken,checkeligible);\r\nrouter.post('/profile',authenticateToken,profile);\r\nmodule.exports=router;"
+        }
+    ]
+}

@@ -1,0 +1,144 @@
+import React, { useState, useEffect, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { TiThMenu } from 'react-icons/ti';
+import { Link } from 'react-router-dom';
+import { Link as ScrollLink } from 'react-scroll';
+//import { useTranslation } from 'react-i18next';
+import './BloodLink.css';
+ 
+
+const BloodLink = () => {
+  const [showLanguagePopup, setShowLanguagePopup] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    const handleClickOutside = useCallback((event) => {
+        if (isOpen && !event.target.closest('.menu-dropdown') && !event.target.closest('.menu-toggle')) {
+            setIsOpen(false);
+        }
+    }, [isOpen]);
+
+    useEffect(() => {
+        document.addEventListener('click', handleClickOutside);
+        return () => {
+            document.removeEventListener('click', handleClickOutside);
+        };
+    }, [handleClickOutside]);
+
+    useEffect(() => {
+        // Simulate a loading delay for the transition
+        const timer = setTimeout(() => setIsLoaded(true), 1500);
+        return () => clearTimeout(timer);
+    }, []);
+    const navigate = useNavigate();
+    const toggleMenu = () => {
+        setIsOpen(!isOpen);
+    };
+//const { t } = useTranslation();
+
+    return (
+        <div className={`bloodlink-container ${isLoaded ? 'fade-in' : ''}`}>
+            <div className="main1">
+                <header className="header">
+                    <h1> BloodLink: Your Blood Group & Donation Hub</h1>
+                    <div className="Menu">
+                        <TiThMenu onClick={toggleMenu} className="menu-toggle" />
+                    </div>
+                </header>
+
+                {isOpen && (
+                    <div className="menu-dropdown show">
+                        <ul>
+                            <li>
+                                <ScrollLink 
+                                 onClick={() => setShowLanguagePopup(true)}
+
+                                >
+                                   Select Language
+                                </ScrollLink>
+                            </li>
+                            <li>
+                                <ScrollLink 
+                                    to="about" 
+                                    smooth={true} 
+                                    duration={500}
+                                    onClick={() => setIsOpen(false)}
+                                    className="scroll-link"
+                                >
+                                    About
+                                </ScrollLink>
+                            </li>
+                            <li>
+                                <ScrollLink 
+                                    to="contact" 
+                                    smooth={true} 
+                                    duration={500}
+                                    onClick={() => setIsOpen(false)}
+                                    className="scroll-link"
+                                >
+                                    Contact
+                                </ScrollLink>
+                            </li>
+                            <li>
+                            <ScrollLink 
+                               onClick={() => navigate('/Learnmore')} /* This must match the id of the target section */
+                                     smooth={true} /* Enables smooth scrolling */
+                     duration={500} /* Scroll duration in milliseconds */
+                    className="scroll-link"
+                    >
+                          Learn more
+                    </ScrollLink>
+                            </li>
+
+                            <li><Link to="/LoginRegister" className="cta-button-menu">Login / Register</Link></li>
+                        </ul>
+                    </div>
+                )}
+ {showLanguagePopup && (
+          <div className="language-popup">
+            <div className="language-modal">
+              <h3>Select Your Language</h3>
+              <div id="google_translate_element"></div>
+              <button onClick={() => setShowLanguagePopup(false)}>Close</button>
+            </div>
+          </div>
+        )}
+
+                <div className="container">
+                    {/* Content sections with IDs matching ScrollLink targets */}
+                    <section id="home" style={{alignContent:"center"}}>
+                    <h2>Find Your Blood Type: A Resource for Donors and Recipients</h2>
+                     <p style={{color:"black"}}>Welcome to BloodLink! This platform is designed for both blood donors and those in need of blood. By knowing your blood type, you can help save lives or ensure you receive the right blood in emergencies.
+                        </p> <Link to="/LoginRegister" className="cta-button">Login / Register</Link>
+                    </section>
+                    
+                    <section id="about">
+                    <h2>About</h2>
+                     <p style={{color:"black"}}> BloodLink is dedicated to helping people find their blood type and encouraging blood donation. Our mission is to raise awareness about the importance of donating blood and to provide resources for those looking to donate.</p>
+                    </section>
+                    <section id="contact">
+                    <h2>Contact</h2> 
+                    <p style={{color:"black"}}> If you have any questions or need assistance, feel free to reach out to us. You can contact us via email at <a href="mailto:support@bloodlink.com"> support@bloodlink.com</a> or call us at (123) 456-7890. </p> 
+                    <p style={{color:"black"}}>Follow us on our social media channels for updates and news about blood donation drives and events.</p>
+                    </section>
+                </div>
+
+                <footer>
+                    <div className="footer-content">
+                        <div className="footer-logo">
+                           BloodLink
+                        </div>
+                        <div className="footer-links">
+                            <Link to="/PrivacyPolicy">Privacy Policy</Link>
+                            <Link to="/TermsandConditions">Terms of Service</Link>
+                            <Link to="/FAQ">FAQ</Link>
+                        </div>
+                        <p>&copy; 2025 BloodLink. All rights reserved.</p>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    );
+};
+
+export default BloodLink;

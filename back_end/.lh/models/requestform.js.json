@@ -1,0 +1,22 @@
+{
+    "sourceFile": "models/requestform.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1763824998924,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1763825822295,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,57 @@\n+const mongoose = require('mongoose');\r\n+\r\n+const Request_Form = new mongoose.Schema({\r\n+  user: {\r\n+    type: mongoose.Schema.Types.ObjectId,\r\n+    ref: 'user',\r\n+    required: true,\r\n+    unique: true\r\n+  },\r\n+\r\n+  patient_name: {\r\n+    type: String,\r\n+    required: true\r\n+  },\r\n+\r\n+  blood_type: {\r\n+    type: String,\r\n+    required: true,\r\n+    enum: {\r\n+      values: ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'],\r\n+      message: '{VALUE} is not a valid blood type'\r\n+    }\r\n+  },\r\n+\r\n+  unit_needed: {\r\n+    type: Number,\r\n+    required: true\r\n+  },\r\n+\r\n+  hospital_name: {\r\n+    type: String,\r\n+    required: true\r\n+  },\r\n+\r\n+  hospital_address: {\r\n+    type: String,\r\n+    required: true\r\n+  },\r\n+\r\n+  date: {\r\n+    type: Date,\r\n+    required: true,\r\n+  },\r\n+\r\n+  contact_name: {\r\n+    type: String,\r\n+    required: true\r\n+  },\r\n+\r\n+  contact_number: {\r\n+    type: String,\r\n+    required: true,\r\n+    match: [/^[0-9]{10}$/, 'Invalid contact number']\r\n+  }\r\n+});\r\n+\r\n+module.exports = mongoose.model('requestform', Request_Form);\r\n"
+                }
+            ],
+            "date": 1763824998924,
+            "name": "Commit-0",
+            "content": "const mongoose=require('mongoose');\r\nconst { required } = require('yargs');\r\nconst Request_Form=new mongoose.Schema({\r\n     user:{\r\n            type: mongoose.Schema.Types.ObjectId,\r\n              ref: 'user',\r\n              required: true,\r\n              unique: true\r\n        },\r\n    patient_name:{\r\n        type:String,\r\n        required:true\r\n    },\r\n    blood_type:{\r\n        type:String,\r\n        required:true,\r\n        enum:{\r\n            values:['A+','A-','B+','B-','AB+','AB-','O+','O-'],\r\n            message:'{VALUE} is invalid blood type'\r\n        }\r\n    },\r\n    unit_needed:{\r\n        type:Number,\r\n        required:true\r\n     },\r\n    hospital_name:{\r\n        type:String,\r\n        required:true\r\n    },\r\n    hospital_address:{\r\n        type:String,\r\n        required:true\r\n    },\r\n    date:{\r\n       type:Date,\r\n       required:true\r\n      },\r\n    contact_name:{\r\n        type:String,\r\n        required:true\r\n    },\r\n    contact_number:{\r\n        type:String,\r\n        required:true\r\n    }\r\n    \r\n})\r\nmodule.exports=mongoose.model('requestform',Request_Form);"
+        }
+    ]
+}

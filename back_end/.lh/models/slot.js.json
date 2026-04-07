@@ -1,0 +1,22 @@
+{
+    "sourceFile": "models/slot.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1763822516040,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1764772637362,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,52 @@\n+const mongoose = require('mongoose');\r\n+\r\n+const Slot_Schema = new mongoose.Schema({\r\n+  user: {\r\n+    type: mongoose.Schema.Types.ObjectId,\r\n+    ref: 'user',\r\n+    required: true,\r\n+    unique: true\r\n+  },\r\n+\r\n+  date: {\r\n+    type: Date,\r\n+    required: true,\r\n+  set: (value) => {\r\n+    const d = new Date(value);\r\n+    d.setHours(0, 0, 0, 0); // remove time\r\n+    return d;\r\n+  }\r\n+  },\r\n+\r\n+  time: {\r\n+    type: Date,    // \"10:30 AM\" or \"14:00\" etc.\r\n+    required: true\r\n+  },\r\n+\r\n+  address: {\r\n+    type: String,\r\n+    required: true\r\n+  },\r\n+\r\n+  location: {\r\n+    type: {\r\n+      type: String,\r\n+      enum: ['Point'],\r\n+      default: 'Point'\r\n+    },\r\n+    coordinates: {\r\n+      type: [Number],   // [longitude, latitude]\r\n+      required: false\r\n+    }\r\n+  },\r\n+\r\n+  slot_confirm: {\r\n+    type: Boolean,\r\n+    default: false\r\n+  },\r\n+  completion_time: {\r\n+    type: Date\r\n+  }\r\n+});\r\n+\r\n+module.exports = mongoose.model('slot', Slot_Schema);\r\n"
+                }
+            ],
+            "date": 1763822516040,
+            "name": "Commit-0",
+            "content": "const mongoose = require('mongoose');\r\n\r\nconst Slot_Schema = new mongoose.Schema({\r\n  user: {\r\n    type: mongoose.Schema.Types.ObjectId,\r\n    ref: 'user',\r\n    required: true,\r\n    unique: true\r\n  },\r\n\r\n  date: {\r\n    type: Date,\r\n    required: true,\r\n  set: (value) => {\r\n    const d = new Date(value);\r\n    d.setHours(0, 0, 0, 0); // remove time\r\n    return d;\r\n  }\r\n  },\r\n\r\n  time: {\r\n    type: String,    // \"10:30 AM\" or \"14:00\" etc.\r\n    required: true\r\n  },\r\n\r\n  address: {\r\n    type: String,\r\n    required: true\r\n  },\r\n\r\n  location: {\r\n    type: {\r\n      type: String,\r\n      enum: ['Point'],\r\n      default: 'Point'\r\n    },\r\n    coordinates: {\r\n      type: [Number],   // [longitude, latitude]\r\n      required: false\r\n    }\r\n  },\r\n\r\n  slot_confirm: {\r\n    type: Boolean,\r\n    default: false\r\n  },\r\n  completion_time: {\r\n    type: Date\r\n  }\r\n});\r\n\r\nmodule.exports = mongoose.model('slot', Slot_Schema);\r\n"
+        }
+    ]
+}

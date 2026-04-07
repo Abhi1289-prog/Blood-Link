@@ -1,0 +1,477 @@
+ const [biometricConnected, setBiometricConnected] = useState(null);
+
+
+const handleNext = () => {
+    if (!biometricConnected) {
+      alert('Biometric device is not connected!');
+      return;
+    }
+    navigate('/blood-detection');
+  };
+
+
+
+ useEffect(() => {
+    const detectBiometricDevice = async () => {
+      if (!navigator.usb) {
+        setBiometricConnected(false);
+        return;
+      }
+
+      try {
+        const devices = await navigator.usb.getDevices();
+        setBiometricConnected(devices.length > 0);
+      } catch (err) {
+        console.error('USB Detection Error:', err);
+        setBiometricConnected(false);
+      }
+    };
+
+    detectBiometricDevice();
+  }, []);
+
+
+
+
+
+ {biometricConnected !== null && (
+          <p className={`text-sm ${biometricConnected ? 'text-green-600' : 'text-red-500'}`}>
+            {biometricConnected ? '✅ Biometric device is connected' : '❌ No biometric device found'}
+          </p>
+        )}
+
+
+ disabled={!biometricConnected}
+
+
+
+     {/*const isNewUser = !storedDetails?.fullName || !storedDetails?.username || !storedDetails?.email || !storedDetails?.phone ||
+                          !storedAddress || !storedUserType ||
+                          (storedUserType === "employee" && !storedOffice);*/}
+
+
+
+/* BloodLink.css - Professional styling with blood donation theme */
+
+/* Import Google Fonts in your index.html: 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"> */
+
+/* Global Styles & Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  body {
+    background-color: #f5f7fa;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Main Container */
+  .main1 {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Header Styles */
+  .header {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    padding: 1.2rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .header h1 {
+    color: white;
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    margin: 0;
+  }
+  
+  .logo-icon {
+    font-size: 1.8rem;
+    margin-right: 0.75rem;
+    color: white;
+  }
+  
+  /* Menu Toggle Button */
+  .Menu {
+    display: flex;
+    align-items: center;
+  }
+  
+  .menu-toggle {
+    font-size: 1.8rem;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .menu-toggle:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Dropdown Menu */
+  .menu-dropdown {
+    position: absolute;
+    top: 4.5rem;
+    right: 2rem;
+    background-color: white;
+    border-radius: 8px;
+    width: 220px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    animation: slideDown 0.3s ease;
+    overflow: hidden;
+  }
+  
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .menu-dropdown ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .menu-dropdown li {
+    border-bottom: 1px solid #eee;
+  }
+  
+  .menu-dropdown li:last-child {
+    border-bottom: none;
+  }
+  
+  .menu-dropdown li a,
+  .menu-dropdown li .scroll-link {
+    display: block;
+    color: #333;
+    text-decoration: none;
+    padding: 0.8rem 1.5rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-weight: 500;
+  }
+  
+  .menu-dropdown li a:hover,
+  .menu-dropdown li .scroll-link:hover {
+    background-color: #f8f9fa;
+    color: #e74c3c;
+    padding-left: 1.75rem;
+  }
+  
+  .cta-button-menu {
+    display: block;
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    color: white !important;
+    padding: 0.8rem 1.5rem;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  .cta-button-menu:hover {
+    background: linear-gradient(135deg, #c0392b 0%, #a83226 100%);
+  }
+  
+  /* Container for sections */
+  .container1 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #fff;
+  }
+  
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+    background-size: cover;
+    background-position: center;
+    padding: 5rem 2rem;
+    text-align: center;
+    color: white;
+  }
+  
+  .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .hero h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+  }
+  
+  .hero p {
+    margin-bottom: 2rem;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    opacity: 0.9;
+  }
+  
+  /* Donation Info Section */
+  .donation-info {
+    padding: 4rem 2rem;
+    background-color: #fff;
+  }
+  
+  .donation-content {
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 2rem;
+  }
+  
+  .donation-text {
+    flex: 1;
+  }
+  
+  .donation-text h2 {
+    color: #e74c3c;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+  
+  .donation-text p {
+    margin-bottom: 1.5rem;
+    color: #555;
+    line-height: 1.8;
+  }
+  
+  .donation-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* About Section */
+  .about-info {
+    background-color: #f8f9fa;
+    padding: 4rem 2rem;
+  }
+  
+  .section-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 2rem;
+  }
+  
+  .about-text {
+    flex: 1;
+  }
+  
+  .about-text h2 {
+    color: #e74c3c;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+  
+  .about-text p {
+    color: #555;
+    line-height: 1.8;
+  }
+  
+  .about-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Contact Section */
+  .contact-info {
+    background-color: #fff;
+    padding: 4rem 2rem;
+  }
+  
+  .contact-text {
+    flex: 1;
+  }
+  
+  .contact-text h2 {
+    color: #e74c3c;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+  
+  .contact-text p {
+    margin-bottom: 1rem;
+    color: #555;
+    line-height: 1.8;
+  }
+  
+  .contact-text a {
+    color: #e74c3c;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+  
+  .contact-text a:hover {
+    color: #c0392b;
+    text-decoration: underline;
+  }
+  
+  .contact-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* CTA Button */
+  .cta-button {
+    display: inline-block;
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(231, 76, 60, 0.3);
+  }
+  
+  .cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 8px rgba(231, 76, 60, 0.4);
+    background: linear-gradient(135deg, #c0392b 0%, #a83226 100%);
+  }
+  
+  /* Footer */
+  footer {
+    background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
+    padding: 3rem 2rem;
+    color: white;
+    margin-top: auto;
+  }
+  
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .footer-links a {
+    color: #ddd;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-links a:hover {
+    color: #e74c3c;
+  }
+  
+  footer p {
+    margin-top: 1rem;
+    opacity: 0.7;
+  }
+  
+  /* Responsive Styles */
+  @media (min-width: 768px) {
+    .donation-content,
+    .section-container {
+      flex-direction: row;
+      align-items: center;
+    }
+    
+    .section-container:nth-child(odd) {
+      flex-direction: row-reverse;
+    }
+    
+    .hero h2 {
+      font-size: 2.5rem;
+    }
+    
+    .donation-text h2,
+    .about-text h2,
+    .contact-text h2 {
+      font-size: 2.2rem;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .header h1 {
+      font-size: 1.3rem;
+    }
+    
+    .logo-icon {
+      font-size: 1.5rem;
+    }
+    
+    .hero {
+      padding: 3rem 1.5rem;
+    }
+    
+    .hero h2 {
+      font-size: 1.8rem;
+    }
+    
+    .donation-info,
+    .about-info,
+    .contact-info {
+      padding: 3rem 1.5rem;
+    }
+    
+    .footer-links {
+      flex-direction: column;
+      gap: 0.8rem;
+      text-align: center;
+    }
+  }
+  @keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 1.5s ease-in-out;
+}

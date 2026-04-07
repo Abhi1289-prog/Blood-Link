@@ -1,0 +1,332 @@
+/* Main container for forms */
+.form-container1 {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(220, 38, 38, 0.13), 0 2px 8px rgba(0,0,0,0.06);
+  padding: 44px 36px 36px 36px;
+  margin: 56px auto 0 auto;
+  position: relative;
+  transition: box-shadow 0.3s, transform 0.2s;
+  z-index: 1;
+  width:auto;
+}
+
+.form-container1:hover {
+  box-shadow: 0 16px 48px rgba(220, 38, 38, 0.18), 0 4px 16px rgba(0,0,0,0.08);
+  transform: translateY(-2px) scale(1.01);
+}
+
+.form-hidden {
+  display: none;
+}
+
+h1, h2 {
+  color: #dc2626;
+  font-weight: 800;
+  margin-bottom: 22px;
+  text-align: center;
+  letter-spacing: 0.7px;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+}
+
+label {
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 4px;
+  display: block;
+  letter-spacing: 0.2px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],.username {
+  width: 100%;
+  height: 50px;
+  background: rgba(255,255,255,0.96);
+  border: 2px solid #e1e8ed;
+  border-radius: 14px;
+  font-size: 17px;
+  color: #222;
+  padding: 0 18px;
+  margin-top: 8px;
+  margin-bottom: 14px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+}
+
+input:focus {
+  border-color: #dc2626;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(220,38,38,0.10);
+}
+
+/* Enhanced Password Input */
+.password-wrapper {
+  position: relative;
+  width: 100%;
+}
+input[type="password"] {
+  width: 100%;
+  padding: 0.9em 1em;
+  border: 2px solid #e1e8ed;
+  border-radius: 10px;
+  font-size: 1.08rem;
+  color: #222;
+  background: #fafafa;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  box-sizing: border-box;
+}
+
+input[type="password"].password-input {
+  padding-right: 48px;
+  letter-spacing: 0.1em;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #b91c1c;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0;
+  z-index: 2;
+  transition: color 0.2s;
+}
+
+.password-toggle:hover {
+  color: #dc2626;
+}
+
+.password-strength {
+  margin-top: -8px;
+  margin-bottom: 10px;
+  font-size: 0.98rem;
+  font-weight: 500;
+  color: #888;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.password-strength.weak { color: #dc2626; }
+.password-strength.medium { color: #f59e42; }
+.password-strength.strong { color: #16a34a; }
+
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: #dc2626;
+  margin-right: 8px;
+  width: 18px;
+  height: 18px;
+}
+
+/* Button styles */
+.btn, .cta-button, .submitButton {
+  background: linear-gradient(90deg, #dc2626 0%, #b91c1c 100%);
+  color: #fff;
+  border: none;
+  border-radius: 28px;
+  padding: 14px 32px;
+  font-size: 1.12rem;
+  font-weight: 700;
+  margin: 16px 0 0 0;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(220,38,38,0.10);
+  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+  outline: none;
+  display: inline-block;
+  letter-spacing: 0.2px;
+}
+
+.btn:hover, .cta-button:hover, .submitButton:hover {
+  background: linear-gradient(90deg, #b91c1c 0%, #dc2626 100%);
+  box-shadow: 0 12px 36px rgba(220,38,38,0.18);
+  transform: translateY(-2px) scale(1.04);
+}
+
+a {
+  color: #dc2626;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: #b91c1c;
+  text-decoration: underline;
+}
+
+.fileInputWrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+}
+
+.fileLabel {
+  display: inline-block;
+  background: linear-gradient(90deg, #f3f4f6 0%, #fef2f2 100%);
+  color: #b91c1c;
+  border: 2px solid #e1e8ed;
+  border-radius: 10px;
+  padding: 10px 24px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  box-shadow: 0 2px 8px rgba(220,38,38,0.06);
+  letter-spacing: 0.1px;
+}
+
+.fileLabel:hover, .fileLabel:focus {
+  background: linear-gradient(90deg, #fef2f2 0%, #f3f4f6 100%);
+  border-color: #dc2626;
+  color: #dc2626;
+  outline: none;
+}
+
+/* OTP Section */
+.otpSection {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.otpInput {
+  width: 100%;
+  height: 44px;
+  border-radius: 10px;
+  border: 2px solid #e1e8ed;
+  padding: 0 14px;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.otpButtonGroup {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.verificationRow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 6px;
+}
+
+.verifiedText {
+  color: #16a34a;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.02rem;
+  margin: 10px 0;
+}
+
+.rememberForgot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.registerLink {
+  text-align: center;
+  margin-top: 20px;
+  color: #333;
+  font-size: 1.02rem;
+}
+
+.inputRow {
+  margin-bottom: 14px;
+}
+
+input[type="radio"] + span,
+input[type="checkbox"] + span {
+  margin-left: 8px;
+}
+
+/* Delivery Partner Styles */
+.deliveryContainer {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 10px 40px rgba(38, 50, 56, 0.13), 0 2px 8px rgba(0,0,0,0.06);
+  padding: 44px 36px 36px 36px;
+  margin: 56px auto 0 auto;
+  max-width: 520px;
+  min-width: 320px;
+  position: relative;
+}
+
+.sectionTitle {
+  color: #dc2626;
+  font-weight: 800;
+  margin-bottom: 14px;
+}
+
+.back {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%);
+  color: white;
+  font-size: 1.05rem;
+  font-weight: 700;
+  padding: 0.7rem 1.3rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(231, 76, 60, 0.14);
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 10;
+}
+
+.back:hover {
+  transform: translateY(-4px) scale(1.06);
+  box-shadow: 0 12px 24px rgba(231, 76, 60, 0.22);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .form-container1,
+  .deliveryContainer {
+    max-width: 99vw;
+    min-width: unset;
+    padding: 20px 4vw 20px 4vw;
+  }
+  .back {
+    top: 10px;
+    left: 10px;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+  .btn, .cta-button, .submitButton {
+    font-size: 1rem;
+    padding: 10px 16px;
+  }
+}
+
+/* Terms and Conditions Footer */
+.footer {
+  margin-top: 36px;
+  color: #888;
+  font-size: 1rem;
+  text-align: center;
+  letter-spacing: 0.1px;
+}

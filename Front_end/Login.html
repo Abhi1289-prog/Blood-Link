@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Login</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background:url('file:///c:/Saro_Abhi Project/Front end/background.jpg') no-repeat center center fixed; 
+            background-size: cover; 
+            color: #fff; 
+        }
+        .container {
+            max-width: 700px;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.7); 
+        }
+
+        h1 {
+            text-align: center;
+            color: #e74c3c; 
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold; 
+        }
+
+        .radio-group {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .radio-group input[type="radio"] {
+            display: none; 
+        }
+
+        .radio-group label {
+            margin: 0 15px;
+            padding: 10px 20px;
+            border: 2px solid #e74c3c;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .radio-group input[type="radio"]:checked + label {
+            background-color: #e74c3c; 
+            color: white;
+        }
+
+        .radio-group label:hover {
+            background-color: rgba(231, 76, 60, 0.7); 
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="tel"],
+        select {
+            width: 100%; 
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 2px solid #e74c3c; 
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: white; 
+            font-size: 16px; 
+        }
+
+        select option {
+            color: black; 
+        }
+
+        button {
+            display: block;
+            width: 100%; /* Full width */
+            padding: 10px; /* Reduced padding for a smaller button */
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 0; /* Reduced margin for less spacing */
+            font-size: 16px; /* Reduced font size for better visibility */
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #c0392b;
+        }
+
+        .tooltip {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            color: #f11111;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            z-index: 10;
+        }
+
+        .rare-blood-group,
+        .license-number {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 id="formTitle">Login as a User</h1>
+        <form id="userForm">
+            <div class="radio-group">
+                <input type="radio" id="donor" name="userType" value="donor" 
+                       onmouseover="showTooltip(event, 'As a donor, you can help save lives by donating blood.')" 
+                       onchange="showAdditionalInputs()">
+                <label for ="donor">Donor</label>
+
+                <input type="radio" id="recipient" name="userType" value="recipient" 
+                       onmouseover="showTooltip(event, 'As a recipient, you can request blood for medical needs.')" 
+                       onchange="showAdditionalInputs()">
+                <label for="recipient">Recipient</label>
+
+                <input type="radio" id="deliveryPartner" name="userType" value="deliveryPartner" 
+                       onmouseover="showTooltip(event, 'As a delivery partner, you will help transport blood donations.')" 
+                       onchange="showAdditionalInputs()">
+                <label for="deliveryPartner">Delivery Partner</label>
+            </div>
+
+            <div id="commonInputs">
+                <label for="emailOrPhone">Email ID or Phone Number:</label>
+                <input type="text" id="emailOrPhone" name="emailOrPhone" required disabled>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <div id="additionalInputs" style="display: none;"></div>
+            <div class="radio-group">
+                <button type="submit">Register</button>
+            </div>
+        </form>
+        <div class="tooltip" id="tooltip"></div>
+    </div>
+
+    <script>
+        function showAdditionalInputs() {
+            const userType = document.querySelector('input[name="userType"]:checked');
+            const additionalInputs = document.getElementById('additionalInputs');
+            const commonInputs = document.getElementById('commonInputs');
+            const emailOrPhoneInput = document.getElementById('emailOrPhone');
+            const formTitle = document.getElementById('formTitle');
+            additionalInputs.innerHTML = ''; 
+
+            if (userType) {
+                commonInputs.style.display = 'block'; // Show common inputs
+                emailOrPhoneInput.disabled = false; // Enable the email or phone input
+
+                if (userType.value === 'donor') {
+                    formTitle.textContent = 'Login as a Donor';
+                   
+                    ;
+                } else if (userType.value === 'recipient') {
+                    formTitle.textContent = 'Login as a Recipient';
+                    
+                } else if (userType.value === 'deliveryPartner') {
+                    formTitle.textContent = 'Login as a Delivery Partner';
+                    
+                    ;
+                }
+
+                additionalInputs.style.display = additionalInputs.innerHTML ? 'block' : 'none';
+            } else {
+                formTitle.textContent = 'Login as a User';
+                commonInputs.style.display = 'none'; // Hide common inputs
+                additionalInputs.style.display = 'none';
+                emailOrPhoneInput.disabled = true; // Disable the email or phone input
+            }
+        }
+
+        function checkRareBloodType() {
+            const bloodTypeNeeded = document.getElementById('bloodTypeNeeded');
+            const rareBloodGroupInput = document.getElementById('rareBloodGroupInput');
+
+            if (bloodTypeNeeded.value === 'Rare') {
+                rareBloodGroupInput.style.display = 'block';
+            } else {
+                rareBloodGroupInput.style.display = 'none';
+            }
+        }
+
+        function toggleLicenseInput() {
+            const vehicleType = document.getElementById('vehicleType');
+            const licenseNumberInput = document.getElementById('licenseNumberInput');
+
+            if (vehicleType.value === 'Vehicle') {
+                licenseNumberInput.style.display = 'block';
+                licenseNumberInput.querySelector('input').setAttribute('required', 'required'); 
+            } else {
+                licenseNumberInput.style.display = 'none';
+                licenseNumberInput.querySelector('input').removeAttribute('required'); 
+            }
+        }
+
+        function showTooltip(event, message) {
+            const tooltip = document.getElementById('tooltip');
+            tooltip.textContent = message;
+            tooltip.style.display = 'block';
+            tooltip.style.left = event.pageX + 'px';
+            tooltip.style.top = (event.pageY + 20) + 'px'; 
+        }
+
+        document.querySelectorAll('input[name="userType"]').forEach(function(radio) {
+            radio.addEventListener('mouseout', function() {
+                document.getElementById('tooltip').style.display = 'none';
+            });
+        });
+
+        document.getElementById('userForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            const userType = document.querySelector('input[name="userType"]:checked');
+            if (userType) {
+                switch (userType.value) {
+                    case 'donor':
+                        window.location.href = 'Donor.html'; // Redirect to donor page
+                        break;
+                    case 'recipient':
+                        window.location.href = 'Receiptent.html'; // Redirect to recipient page
+                        break;
+                    case 'deliveryPartner':
+                        window.location.href = 'Delivery Partner.html'; // Redirect to delivery partner page
+                        break;
+                    default:
+                        alert('Please select a user type.');
+                }
+            } else {
+                alert('Please select a user type.');
+            }
+        });
+    </script>
+
+</body>
+</html>

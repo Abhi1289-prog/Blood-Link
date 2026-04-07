@@ -1,0 +1,844 @@
+/* BloodLink.css - Enhanced with Blood Donation & Blood Group Detection Animations */
+
+/* Global Styles */
+/* Global Styles */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f8f8f8;
+  color: #333;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+
+
+
+/* Main container for fade-in effect and background positioning */
+.bloodlink-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+  position: relative;
+  z-index: 0;
+}
+
+.bloodlink-container.fade-in {
+  opacity: 1;
+}
+
+/* --- ENHANCED ANIMATED BACKGROUND --- */
+.blood-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(45deg, #ffe6e6 0%, #ffcccc 25%, #ffe6e6 50%, #ffdddd 75%, #ffe6e6 100%);
+  background-size: 400% 400%;
+  overflow: hidden;
+  animation: bloodGradientFlow 25s ease infinite;
+}
+
+/* Multiple animated blood droplets with different sizes and speeds */
+.blood-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(circle at 15% 25%, rgba(220, 38, 38, 0.08) 3%, transparent 8%),
+    radial-gradient(circle at 85% 75%, rgba(239, 68, 68, 0.06) 4%, transparent 9%),
+    radial-gradient(circle at 45% 15%, rgba(185, 28, 28, 0.07) 2%, transparent 6%),
+    radial-gradient(circle at 25% 85%, rgba(220, 38, 38, 0.05) 5%, transparent 10%),
+    radial-gradient(circle at 75% 45%, rgba(239, 68, 68, 0.04) 3%, transparent 7%),
+    radial-gradient(circle at 55% 65%, rgba(185, 28, 28, 0.06) 4%, transparent 8%);
+  background-size: 300px 300px, 250px 250px, 180px 180px, 220px 220px, 280px 280px, 200px 200px;
+  animation: bloodDropletFlow 80s linear infinite;
+}
+
+/* Pulsating cross/medical symbol in background */
+.blood-background::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(0deg, rgba(220, 38, 38, 0.03) 45%, rgba(220, 38, 38, 0.08) 50%, rgba(220, 38, 38, 0.03) 55%),
+              linear-gradient(90deg, rgba(220, 38, 38, 0.03) 45%, rgba(220, 38, 38, 0.08) 50%, rgba(220, 38, 38, 0.03) 55%);
+  transform: translate(-50%, -50%);
+  animation: medicalCrossPulse 4s ease-in-out infinite;
+  border-radius: 10px;
+  box-shadow: 0 0 40px rgba(220, 38, 38, 0.1);
+}
+
+/* --- BLOOD GROUP DETECTION ANIMATIONS --- */
+
+/* Blood Group Indicator Animation */
+.blood-group-indicator {
+  position: relative;
+  display: inline-block;
+  padding: 15px 25px;
+  border: 3px solid #dc2626;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ffffff 0%, #fef2f2 100%);
+  animation: bloodGroupPulse 3s ease-in-out infinite;
+  box-shadow: 0 5px 20px rgba(220, 38, 38, 0.3);
+  overflow: hidden;
+  /* Added for better centering when used in a flex/grid context */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blood-group-indicator::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent 30%, rgba(220, 38, 38, 0.1) 50%, transparent 70%);
+  animation: bloodGroupScan 2s linear infinite;
+  transform: rotate(45deg);
+}
+
+/* Blood Type Badge Animation */
+.blood-type-badge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+  color: white;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 1.2rem;
+  animation: bloodTypeBounce 2s ease-in-out infinite;
+  box-shadow: 0 8px 25px rgba(220, 38, 38, 0.4);
+  overflow: hidden;
+}
+
+.blood-type-badge::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: bloodTypeShine 3s ease-in-out infinite;
+}
+
+/* --- DONATION PROCESS ANIMATIONS --- */
+
+/* Blood Drop Animation for Donation */
+.donation-drop {
+  position: relative;
+  width: 30px;
+  height: 40px;
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  animation: donationDrop 4s ease-in-out infinite;
+  box-shadow: 0 5px 15px rgba(220, 38, 38, 0.5);
+}
+
+.donation-drop::before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 8px;
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  animation: dropletGlint 2s ease-in-out infinite;
+}
+
+/* IV Drip Animation */
+.iv-drip-line {
+  position: relative;
+  width: 2px;
+  height: 100px;
+  background: linear-gradient(to bottom, #dc2626 0%, #ef4444 50%, #dc2626 100%);
+  margin: 0 auto;
+  animation: ivFlow 3s linear infinite;
+}
+
+.iv-drip-line::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: -4px;
+  width: 10px;
+  height: 10px;
+  background: #dc2626;
+  border-radius: 50%;
+  animation: ivDroplet 3s ease-in-out infinite;
+}
+
+/* --- PROGRESS BAR ANIMATIONS --- */
+
+/* Blood Collection Progress */
+.blood-collection-progress {
+  position: relative;
+  width: 100%;
+  height: 20px;
+  background: linear-gradient(to right, #fee2e2 0%, #fecaca 100%);
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid #dc2626;
+}
+
+.blood-collection-progress::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #dc2626 0%, #ef4444 50%, #dc2626 100%);
+  animation: bloodFillProgress 8s ease-in-out infinite;
+  border-radius: 8px;
+}
+
+.blood-collection-progress::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
+  animation: progressShimmer 2s ease-in-out infinite;
+}
+
+/* --- MEDICAL EQUIPMENT ANIMATIONS --- */
+
+/* Stethoscope Animation */
+.stethoscope-animation {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border: 4px solid #dc2626;
+  border-radius: 50%;
+  animation: stethoscopePulse 2s ease-in-out infinite;
+}
+
+.stethoscope-animation::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  background: #dc2626;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: heartbeatRing 1.5s ease-in-out infinite;
+}
+
+/* Blood Bag Animation */
+.blood-bag {
+  position: relative;
+  width: 60px;
+  height: 80px;
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 50%, #991b1b 100%);
+  border-radius: 10px 10px 20px 20px;
+  animation: bloodBagFill 5s ease-in-out infinite;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.blood-bag::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  width: 20px;
+  height: 10px;
+  background: #666;
+  border-radius: 5px 5px 0 0;
+  transform: translateX(-50%);
+}
+
+.blood-bag::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: linear-gradient(to top, #7f1d1d 0%, #dc2626 100%);
+  border-radius: 0 0 20px 20px;
+  animation: bagFillLevel 5s ease-in-out infinite;
+}
+
+/* --- ENHANCED KEYFRAME ANIMATIONS --- */
+
+@keyframes bloodGradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes bloodDropletFlow {
+  0% {
+    background-position: 0% 0%, 100% 100%, 25% 75%, 75% 25%, 50% 50%, 0% 100%;
+    transform: rotate(0deg);
+  }
+  100% {
+    background-position: 100% 100%, 0% 0%, 75% 25%, 25% 75%, 0% 0%, 100% 0%;
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes medicalCrossPulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+@keyframes bloodGroupPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 5px 20px rgba(220, 38, 38, 0.3);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 8px 30px rgba(220, 38, 38, 0.5);
+  }
+}
+
+@keyframes bloodGroupScan {
+  0% { transform: translateX(-200%) rotate(45deg); }
+  100% { transform: translateX(200%) rotate(45deg); }
+}
+
+@keyframes bloodTypeBounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-10px) scale(1.05); }
+}
+
+@keyframes bloodTypeShine {
+  0% { left: -100%; }
+  50% { left: 100%; }
+  100% { left: 100%; }
+}
+
+@keyframes donationDrop {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-5px) rotate(-2deg); }
+  75% { transform: translateY(5px) rotate(2deg); }
+}
+
+@keyframes dropletGlint {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.2); }
+}
+
+@keyframes ivFlow {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 0% 200%; }
+}
+
+@keyframes ivDroplet {
+  0% { opacity: 0; transform: translateY(0) scale(0.5); }
+  50% { opacity: 1; transform: translateY(20px) scale(1); }
+  100% { opacity: 0; transform: translateY(40px) scale(0.5); }
+}
+
+@keyframes bloodFillProgress {
+  0% { width: 0%; }
+  70% { width: 85%; }
+  100% { width: 100%; }
+}
+
+@keyframes progressShimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes stethoscopePulse {
+  0%, 100% { transform: scale(1); border-color: #dc2626; }
+  50% { transform: scale(1.1); border-color: #ef4444; }
+}
+
+@keyframes heartbeatRing {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  50% { transform: translate(-50%, -50%) scale(1.3); opacity: 0.7; }
+}
+
+@keyframes bloodBagFill {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.02) rotate(1deg); }
+}
+
+@keyframes bagFillLevel {
+  0% { height: 20%; }
+  50% { height: 70%; }
+  100% { height: 85%; }
+}
+
+/* --- ENHANCED EXISTING ANIMATIONS --- */
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes headerGlow {
+  0% {
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1), 0 0 5px #ff6b6b, 0 0 10px rgba(220, 38, 38, 0.3);
+  }
+  50% {
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2), 0 0 15px #dc2626, 0 0 25px rgba(220, 38, 38, 0.5);
+  }
+  100% {
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1), 0 0 5px #ff6b6b, 0 0 10px rgba(220, 38, 38, 0.3);
+  }
+}
+
+/* --- UTILITY CLASSES FOR ANIMATIONS --- */
+
+.animate-blood-drop {
+  animation: donationDrop 4s ease-in-out infinite;
+}
+
+.animate-blood-group {
+  animation: bloodGroupPulse 3s ease-in-out infinite;
+}
+
+.animate-iv-drip {
+  animation: ivFlow 3s linear infinite;
+}
+
+.animate-stethoscope {
+  animation: stethoscopePulse 2s ease-in-out infinite;
+}
+
+.animate-blood-bag {
+  animation: bloodBagFill 5s ease-in-out infinite;
+}
+
+/* --- REMAINING ORIGINAL STYLES --- */
+
+.menu-dropdown {
+  transform-origin: top right;
+  transform: scale(0.9);
+  opacity: 0;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease-out;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  min-width: 200px;
+  border: 1px solid rgba(220, 38, 38, 0.1);
+  position: absolute;
+  top: 80px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.menu-dropdown.show {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.main1 {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+ 
+  margin: 0 auto;
+ 
+  z-index: 1;
+}
+
+.header {
+  width: 200%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(5px);
+  border-radius: 15px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+  width:auto;
+  margin: 0;
+  font-size: 2.2rem;
+  color: #dc2626;
+  letter-spacing: 0.5px;
+  animation: headerGlow 2s infinite alternate;
+}
+
+.menu-toggle {
+  font-size: 2.2rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, color 0.3s ease;
+  color: #dc2626;
+}
+
+.menu-toggle:hover {
+  transform: scale(1.1) rotate(5deg);
+  color: #ef4444;
+}
+
+.menu-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-item {
+  margin-bottom: 10px;
+}
+
+.menu-link {
+  color: black;
+  text-decoration: none;
+  padding: 10px;
+  display: block;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+  text-align: left;
+}
+
+.menu-link:hover {
+  background-color: #fef2f2;
+  transform: translateX(5px);
+  color: #dc2626;
+}
+
+/* Enhanced CTA Button */
+.cta-button {
+  background-color: #dc2626;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(220, 38, 38, 0.4);
+  position: relative;
+  overflow: hidden;
+  transform: translateZ(0);
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+}
+
+.cta-button:hover,
+.cta-button:focus {
+  background-color: #b91c1c;
+  box-shadow: 0 8px 24px rgba(220, 38, 38, 0.5);
+  transform: translateY(-2px) scale(1.03);
+}
+
+
+
+/* Optional: Label styling for better alignment */
+
+.container {
+  width: 100%;
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+
+section {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 40px;
+  border-radius: 15px;
+  margin-bottom: 40px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  border: 1px solid rgba(220, 38, 38, 0.2);
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #dc2626;
+}
+
+.paragraph-text {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: black;
+  max-width: 800px;
+  margin: 0 auto 20px;
+}
+
+.language-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.language-modal {
+  background-color: white;
+  border-radius: 20px;
+  padding: 30px;
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(220, 38, 38, 0.3);
+}
+
+.modal-title {
+  color: #dc2626;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.language-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.language-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border: 2px solid #e5e5e5;
+  border-radius: 10px;
+  background-color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  /* Added: consistent height */
+  min-height: 50px;
+}
+
+.language-button:hover {
+  border-color: #ff9999;
+  background-color: #fffafa;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.language-button.selected {
+  border-color: #dc2626;
+  background-color: #ffebe6;
+  color: #dc2626;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(220, 38, 38, 0.3);
+  /* Added: subtle inner shadow for depth */
+  box-shadow: inset 0 0 5px rgba(220, 38, 38, 0.2), 0 4px 10px rgba(220, 38, 38, 0.3);
+}
+
+.flag-icon {
+  font-size: 1.5em;
+  /* Added: small right margin for spacing */
+  margin-right: 5px;
+}
+
+.close-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #dc2626;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 3px 10px rgba(220, 38, 38, 0.3);
+}
+
+.close-button:hover {
+  background-color: #ef4444;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(220, 38, 38, 0.5);
+}
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.loading-spinner {
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid #dc2626;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+footer {
+  width: 200%;
+  height: 100%;
+  background: #333;
+  color: white;
+  padding: 30px 20px;
+  text-align: center;
+  margin-top: auto;
+  border-top: 5px solid #dc2626;
+  box-shadow: 0 -5px 15px rgba(0,0,0,0.2);
+}
+
+.footer-content {
+  
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.footer-logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #dc2626;
+}
+
+.footer-links a {
+  color: #bbb;
+  text-decoration: none;
+  margin: 0 15px;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 1.8rem;
+  }
+
+  .menu-dropdown {
+    width: calc(100% - 40px);
+    right: 20px;
+    left: 20px;
+    max-width: 300px;
+  }
+
+  section {
+    padding: 30px 20px;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .paragraph-text {
+    font-size: 1rem;
+  }
+
+  .language-modal {
+    padding: 20px;
+  }
+
+  .language-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 15px;
+  }
+
+  .header h1 {
+    font-size: 1.5rem;
+  }
+
+  .cta-button {
+    /* Use !important cautiously, but here it helps override potential parent styles */
+    width: 80% !important;
+    padding: 10px 20px;
+  }
+
+  .language-button {
+    /* Adjust padding/font size for smaller screens if needed */
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+}
+.translating-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.translating-text {
+  background: #fff;
+  padding: 20px 40px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #d62828;
+  box-shadow: 0 0 10px #d62828;
+}

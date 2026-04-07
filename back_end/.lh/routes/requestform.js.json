@@ -1,0 +1,18 @@
+{
+    "sourceFile": "routes/requestform.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1763806879534,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1763806879534,
+            "name": "Commit-0",
+            "content": "const express = require('express');\r\nconst  authenticateToken = require('../middelwares/auth');\r\nconst feed_back=require('../controller/feedback');\r\nconst {bloodrequest,\r\n     emergency,\r\n      nearbyDonors,\r\n        check_availability,\r\n         request_status,\r\n         acceptRequest,\r\n         updateDonorLocation,\r\n         getDonorLocation, \r\n        }=require('../controller/request');\r\nconst router = express.Router();\r\nrouter.post('/RequestBlood',authenticateToken,bloodrequest);\r\nrouter.post('/EmergencyButton',authenticateToken,emergency);\r\nrouter.post('/FindDonors',authenticateToken,nearbyDonors);\r\nrouter.post('/RecipientFeedback',authenticateToken,feed_back);\r\nrouter.post('/BloodStock',check_availability);\r\nrouter.post('/donor-status',authenticateToken,request_status);\r\nrouter.post('/Accept',authenticateToken,acceptRequest);\r\nrouter.post('/update-location',authenticateToken,updateDonorLocation);\r\nrouter.post('/get-location',authenticateToken,getDonorLocation);\r\nmodule.exports = router;"
+        }
+    ]
+}

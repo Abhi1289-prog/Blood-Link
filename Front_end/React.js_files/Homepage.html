@@ -1,0 +1,275 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BloodLink</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('file:///c:/Saro_Abhi Project/Front end/background.jpg') no-repeat center center fixed; 
+            background-size: cover;
+            color: white;
+        }
+
+        h1 {
+            background: rgba(192, 57, 43, 0.9);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 5px solid #e74c3c;
+            font-size: 2.5em;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        nav {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #c0392b;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #e74c3c;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(192, 57, 43, 0.8);
+            padding: 40px; 
+            border-radius: 30px; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+            margin: 20px auto;
+            max-width: 800px;
+        }
+
+        .hero {
+            background: rgba(231, 76, 60, 0.9);
+            text-align: center;
+            padding: 40px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .donation-info {
+            background: rgba(231, 76, 60, 0.9);
+            padding: 30px 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .info-container {
+            margin-top: 20px;
+        }
+
+        .about-info, .contact-info {
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            margin: 10px 0; /* Space between boxes */
+            text-align: left; /* Align text to the left */
+            background: rgba(255, 255, 255, 0.1); /* Light background for contrast */
+        }
+
+        .cta-button {
+            background-color: #c0392b;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            font-size: 1.1em;
+            margin-top: 20px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .cta-button:hover {
+            background-color: #e74c3c;
+            transform: scale(1.05);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(192, 57, 43, 0.9);
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .right-menu {
+            position: fixed; 
+            top: 100px; 
+            right: 20px; 
+            background: rgba(0, 0, 0, 0.7); 
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            display: none; /* Initially hidden */
+            text-align: center; 
+        }
+
+        .right-menu ul {
+            list-style-type: none;
+            padding: 10px;
+        }
+
+        .right-menu ul li {
+            margin: 20px 10px; 
+        }
+
+        .right-menu ul li a {
+            text-decoration: none;
+            color: #dccecd;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .right-menu ul li a:hover {
+            color: #c0392b;
+        }
+
+        .toggle-menu {
+            float: right; 
+            margin: 50px; 
+            background-color: transparent; /* Make background transparent */
+            color: white; /* Change icon color */
+            border: none;
+            cursor: pointer;
+            font-size: 2em; /* Increase icon size */
+            transition: transform 0.2s;
+        }
+
+        .toggle-menu:hover {
+            transform: scale(1.1); /* Slightly enlarge on hover */
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .cta-button {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+
+            .info-container {
+                flex-direction: column; /* Stack boxes on small screens */
+            }
+
+            .about-info, .contact-info {
+                margin: 10px 0; /* Adjust margin for stacked layout */
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>BloodLink: Your Blood Group & Donation Hub</h1>
+    
+    <nav>
+        <ul>
+            <li><a href="#about" class="cta-button">About</a></li>
+            <li><a href="#contact" class="cta-button">Contact</a></li>
+        </ul>
+    </nav>
+   
+    <div class="right-menu" id="rightMenu">
+        <h2>Menu</h2>
+        <ul>
+            <li><a href="#detector">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="learnmore.html">Learn More</a></li>
+            <li><a href="Login.html" class="cta-button">Login</a></li>
+        </ul>
+    </div>
+    
+    <button id="menuToggle" class="toggle-menu" style="cursor: pointer;">
+        <i class="fas fa-bars"></i> <!-- Font Awesome menu icon -->
+    </button>
+    
+    <div class="container">
+        <div class="hero">
+            <h2>Find Your Blood Type: A Resource for Donors and Recipients</h2>
+            <p>Welcome to the Type Tracker! This platform is designed for both blood donors and those in need of blood. By knowing your blood type, you can help save lives or ensure you receive the right blood in emergencies.</p>
+            <a href="Register.html" class="cta-button">Register</a>
+        </div>
+        <div class="donation-info">
+            <h2>Become a Hero, Donate Blood</h2>
+            <p>Your donation can save lives. Join our community of donors today!</p>
+            <p>Every donation can help save up to three lives. Blood is always needed for surgeries, trauma care, and cancer treatments.</p>
+            <a href="learnmore.html" class="cta-button">Learn More</a>
+        </div>
+
+        <!-- About Section -->
+        <div id="about" class="about-info">
+            <h2>About </h2>
+            <p>BloodLink is dedicated to helping people find their blood type and encouraging blood donation. Our mission is to raise awareness about the importance of donating blood and to provide resources for those looking to donate.</p>
+        </div>
+
+        <!-- Contact Section -->
+        <div id="contact" class="contact-info">
+            <h2>Contact</h2>
+            <p>If you have any questions or need assistance, feel free to reach out to us. You can contact us via email at <a href="mailto:support@bloodlink.com" style="color: #e74c3c;">support@bloodlink.com</a> or call us at (123) 456-7890.</p>
+            <p>Follow us on our social media channels for updates and news about blood donation drives and events.</p>
+        </div>
+    </div>
+    
+
+    <footer>
+        <p>&copy; 2025 BloodLink. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function menubar()
+        {
+        // JavaScript to toggle the menu visibility
+        const menuToggle = document.getElementById('menuToggle');
+        const menu = document.getElementById('rightMenu');
+
+        menuToggle.addEventListener('click', function() {
+            // Toggle the display property
+            if (menu.style.display === 'block') {
+                menu.style.display = 'none'; // Hide the menu
+            } else {
+                menu.style.display = 'block'; // Show the menu
+            }
+        });
+
+        // Close the menu when clicking outside of it
+        document.addEventListener('click', function(event) {
+            if (!menu.contains(event.target) && event.target !== menuToggle) {
+                menu.style.display = 'none'; // Hide the menu
+            }
+        });
+
+        // Close the menu when it loses focus
+        menuToggle.addEventListener('blur', function() {
+            menu.style.display = 'none'; // Hide the menu
+        });
+    }
+    </script>
+</body>
+</html>

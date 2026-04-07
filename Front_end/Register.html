@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('file:///c:/Saro_Abhi Project/Front end/background.jpg') no-repeat center center fixed; 
+            background-size: cover; 
+            color: #fff; 
+        }
+        .container {
+            max-width: 700px;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.7); 
+        }
+
+        h1 {
+            text-align: center;
+            color: #e74c3c; 
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold; 
+        }
+
+        .radio-group {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .radio-group input[type="radio"] {
+            display: none; 
+        }
+
+        .radio-group label {
+            margin: 0 15px;
+            padding: 10px 20px;
+            border: 2px solid #e74c3c;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .radio-group input[type="radio"]:checked + label {
+            background-color: #e74c3c; 
+            color: white;
+        }
+
+        .radio-group label:hover {
+            background-color: rgba(231, 76, 60, 0.7); 
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="tel"],
+        select {
+            width: 100%; 
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 2px solid #e74c3c; 
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: white; 
+            font-size: 16px; 
+        }
+
+        select option {
+            color: black; 
+        }
+
+        button {
+            display: block;
+            width: 100%; /* Full width */
+            padding: 10px; /* Reduced padding for a smaller button */
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 0; /* Reduced margin for less spacing */
+            font-size: 16px; /* Reduced font size for better visibility */
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #c0392b;
+        }
+
+        .tooltip {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            color: #f11111;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            z-index: 10;
+        }
+
+        .rare-blood-group,
+        .license-number {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Register as a User</h1>
+        <form > <!-- Call validate function on form submission -->
+            <div id="commonInputs">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email ID</label>
+                <input type="text" id="email" name="email" required>
+                <label for="phoneno">Phone Number</label>
+                <input type="tel" id="phoneno" name="phoneno" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <div id="additionalInputs" style="display: none;"></div>
+            <div class="radio-group">
+                <button type="submit" onsubmit="return validate();" >Register</button>
+            </div>
+        </form>
+        <div class="tooltip" id="tooltip"></div>
+    </div>
+
+    <script>
+        let generatedOTP;
+
+        function showAdditionalInputs() {
+            const userType = document.querySelector('input[name="userType"]:checked');
+            const additionalInputs = document.getElementById('additionalInputs');
+            const commonInputs = document.getElementById('commonInputs');
+            const formTitle = document.getElementById('formTitle');
+            additionalInputs.innerHTML = ''; 
+        }
+
+        function showTooltip(event, message) {
+            const tooltip = document.getElementById('tooltip');
+            tooltip.textContent = message;
+            tooltip.style.display = 'block';
+            tooltip.style.left = event.pageX + 'px';
+            tooltip.style.top = (event.pageY + 20) + 'px'; 
+        }
+
+        document.querySelectorAll('input[name="userType"]').forEach(function(radio) {
+            radio.addEventListener('mouseout', function() {
+                document.getElementById('tooltip').style.display = 'none';
+            });
+        });
+
+        function validate() {
+            var name = document.getElementById("name").value.trim();
+            var email = document.getElementById("email").value.trim();
+            var phoneno = document.getElementById("phoneno").value.trim();
+            var password = document.getElementById("password").value.trim();
+            var emailid = /^[A-Za-z0-9._-]+@[A-Za-z0-9._-]+\.[A-Za-z]{2,3}$/;
+            var mobilexp = /^[0-9]{10}$/;
+
+            if (name === "") {
+                window.alert("Enter your name");
+                return false;
+            }
+            if (!emailid.test(email)) {
+                window.alert("Enter valid email id");
+                return false;
+            }
+            if (!mobilexp.test(phoneno)) {
+                window.alert("Mobile Number must be in 10 digits");
+                return false;
+            }
+            if (password === "") {
+                window.alert("Enter your password");
+                return false;
+            }
+
+            // Generate and send OTP
+            generatedOTP = Math.floor(100000 + Math.random() * 900000); // Generate a 6-digit OTP
+            alert("Your OTP is: " + generatedOTP); // Simulate sending OTP via SMS
+
+            // Prompt user for OTP
+            var userOTP = prompt("Please enter the OTP sent to your phone:");
+            if (userOTP == generatedOTP) {
+                alert("Registered Successfully");
+                return true; // Allow form submission
+            } else {
+                alert("Invalid OTP. Registration failed.");
+                return false; // Prevent form submission
+            }
+        }
+    </script>
+
+</body>
+</html>

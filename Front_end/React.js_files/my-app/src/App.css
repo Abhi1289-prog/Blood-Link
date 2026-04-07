@@ -1,0 +1,57 @@
+
+
+/* Gradient background animation */
+@keyframes bloodGradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Global body styling */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+
+  background: linear-gradient(
+    120deg,
+    #b31217 0%,
+    #ff4e50 30%,
+    #fff 50%,
+    #ff4e50 70%,
+    #b31217 100%
+  );
+  background-size: 200% 200%;
+  background-attachment: fixed;
+  animation: bloodGradientFlow 15s ease-in-out infinite;
+
+  color: #222; /* Dark text for visibility */
+  line-height: 1.6;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Optional: helpful for debugging layout issues */
+* {
+  box-sizing: border-box;
+}
+
+/* Optional: debug outlines — remove after testing */
+/*
+* {
+  outline: 1px solid red;
+}
+*/
+
+
+

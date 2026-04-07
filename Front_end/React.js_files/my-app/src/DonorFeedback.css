@@ -1,0 +1,140 @@
+/* Feedback Container */
+.feedback-container {
+  max-width: 600px;
+  margin: 3rem auto;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #d1d5db;
+}
+
+/* Title */
+.feedback-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #dc2626;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Form */
+.feedback-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Label */
+.feedback-label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: block;
+  color: #ea2d27;
+}
+
+/* Input, Select, Textarea */
+.feedback-input,
+.feedback-select,
+.feedback-textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  background-color: #f9fafb;
+  color: #111827;
+  transition: border-color 0.2s ease;
+}
+
+.feedback-input:focus,
+.feedback-select:focus,
+.feedback-textarea:focus {
+  border-color: #dc2626;
+  outline: none;
+}
+
+.feedback-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Submit Button */
+.feedback-button {
+  background-color: #dc2626;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.feedback-button:hover {
+  background-color: #b91c1c;
+}
+
+/* Back Button */
+.back {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.back:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .feedback-container {
+    margin: 2rem 1rem;
+    padding: 1.5rem;
+  }
+
+  .back {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+/* Star Rating */
+.star-rating {
+  display: flex;
+  gap: 8px;
+  font-size: 2rem;
+  cursor: pointer;
+  user-select: none;
+  margin-top: 0.5rem;
+}
+
+.star {
+  color: #d1d5db;
+  transition: color 0.3s ease;
+}
+
+.star.filled {
+  color: #facc15; /* Gold/Yellow */
+}
+
+.star:hover {
+  transform: scale(1.2);
+}
+.rating-label {
+  text-align: center;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  color: #e23737; /* Tailwind gray-500 */
+  font-size: 1rem;
+}
