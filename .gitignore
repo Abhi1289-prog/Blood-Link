@@ -40,3 +40,6 @@ coverage/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+back_end/model_final_savedmodel/
+back_end/tfjs_model/
