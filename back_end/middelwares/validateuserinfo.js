@@ -7,9 +7,10 @@ exports.validatePersonalDetail = [
     .withMessage("Address is missing"),
 
   check("officeaddress")
+    .optional({ values: "falsy" })
     .trim()
-    .notEmpty()
-    .withMessage("Office address is missing"),
+    .isString()
+    .withMessage("Office address must be text"),
 
   check("age")
     .trim()
@@ -23,7 +24,8 @@ exports.validatePersonalDetail = [
     .trim()
     .notEmpty()
     .withMessage("Gender is required")
-    .isIn(["male", "female", "others"])
+    .toLowerCase()
+    .isIn(["male", "female", "other", "others"])
     .withMessage("Gender must be male, female or others"),
 
 
