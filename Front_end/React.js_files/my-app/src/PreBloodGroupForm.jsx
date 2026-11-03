@@ -84,23 +84,35 @@ const PreBloodGroupForm = () => {
     );
 
     const data = profileResponse.data.data;
-    const {address,age,gender,bloodgroup,officeaddress}=data;
+    const {
+      address,
+      age: profileAge,
+      gender: profileGender,
+      bloodgroup,
+      officeaddress,
+    } = data;
     localStorage.setItem('address',address);
-    localStorage.setItem('age',age);
-    localStorage.setItem('gender',gender);
+    localStorage.setItem('age',profileAge);
+    localStorage.setItem('gender',profileGender);
     localStorage.setItem('bloodgroup',bloodgroup);
     localStorage.setItem('officeaddress',officeaddress);
     setUserData({
       address,
-      age,
-      gender,
+      age: profileAge,
+      gender: profileGender,
       bloodgroup,
       officeaddress,
     });
     navigate('/donor-and-receiptent');
     } catch (error) {
       console.error('Submission failed:', error);
-      showMessage(error.response?.data?.message || 'Failed to submit details.', 'error');
+      const validationErrors = error.response?.data?.errors
+        ?.map(({ path, param, msg }) => `${path || param}: ${msg}`)
+        .join(', ');
+      showMessage(
+        validationErrors || error.response?.data?.message || 'Failed to submit details.',
+        'error'
+      );
     }
   };
 
