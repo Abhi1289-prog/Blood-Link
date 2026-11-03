@@ -10,34 +10,75 @@
   }
 }
 body {
-   
-    display: flex;
-    justify-items:center;
-    align-items: center;
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
   font-family: 'Poppins', sans-serif;
-
+  color: #222;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
   background: linear-gradient(
     120deg,
     #b31217 0%,
     #ff4e50 30%,
     #fff 50%,
     #ff4e50 70%,
-    #b31217 100%
-  );
-  background-size: 300% 300%;
-  background-attachment:scroll;
-  animation: bloodGradientFlow 15s ease-in-out infinite;
-
   color: #222; /* Dark text for visibility */
-  line-height: 1.6;
+  line-height: var(--base-line-height);
+  background-size: 300% 300%;
+  background-attachment: scroll;
+  animation: bloodGradientFlow 15s ease-in-out infinite;
+}
 
+/* Main app wrapper to constrain layout and allow responsive stacking */
+.app-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+@media (max-width: 900px) {
+  .app-container { max-width: 720px; padding: 12px; }
+}
+:root {
+  --scale-min: 14px;
+  --scale-max: 18px;
+  --base-line-height: 1.6;
+}
+
+html {
+  font-size: clamp(var(--scale-min), 1.2vw + 12px, var(--scale-max));
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
 
-  overflow-x: hidden;
-  scroll-behavior: smooth;
+/* Motion/animation accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Headings scale responsively */
+h1 { font-size: clamp(1.6rem, 2.6vw, 2.6rem); line-height: 1.1; }
+h2 { font-size: clamp(1.2rem, 2.0vw, 1.6rem); }
+
+/* Reusable animation helpers */
+.animated { will-change: transform, opacity; }
+.fade-in { animation: fadeIn 600ms ease both; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity:1; transform: translateY(0); } }
+
+/* Utility to scale text inside components */
+.fluid-text { font-size: clamp(0.9rem, 1.4vw, 1.05rem); }
+}
+
+@media (max-width: 600px) {
+  .app-container { max-width: 100%; padding: 10px; }
 }
 
 /* Optional: helpful for debugging layout issues */

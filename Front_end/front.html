@@ -1,17 +1,26 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Type Tracker</title>
-    <script>
-        var ep=document.getElementById("epn").value;
-        var pwd=document.getElementById("pwd").value;
-    </script>
+    <style>
+        .site-container { max-width:720px; margin:24px auto; padding:12px; }
+        form { display:flex; flex-direction:column; gap:12px; }
+        input[type="text"], input[type="password"] { padding:8px; width:100%; box-sizing:border-box; }
+        @media (max-width:600px){ .site-container { padding:10px; } }
+    </style>
 </head>
 <body>
-    <form>
-        <H1>Blood Group Detector</H1>
-<label>Enter Your</label><input type="text" name="Emailid\Phoneno" id="epn">
- Enter Password<input type="password" name="Password" id="pwd">
- <input type="button" value="Submit" onclick="">
-    </form>
+    <div class="site-container">
+        <form>
+            <h1>Blood Group Detector</h1>
+            <label>Enter Your</label>
+            <input type="text" name="Emailid/Phoneno" id="epn">
+            <label>Enter Password</label>
+            <input type="password" name="Password" id="pwd">
+            <input type="button" value="Submit" onclick="">
+        </form>
+    </div>
 </body>
 </html>

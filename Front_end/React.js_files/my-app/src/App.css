@@ -53,5 +53,93 @@ body {
 }
 */
 
+/* Layout utilities */
+.container, .app-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.col {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.col-1 { flex: 1 1 8%; }
+.col-2 { flex: 1 1 16%; }
+.col-3 { flex: 1 1 25%; }
+.col-4 { flex: 1 1 33%; }
+.col-6 { flex: 1 1 50%; }
+.col-12 { flex: 1 1 100%; }
+
+img, video { max-width: 100%; height: auto; display: block; }
+
+/* Buttons: stack full width on small screens */
+.btn, .cta-button { white-space: normal; }
+@media (max-width: 600px) {
+  .btn, .cta-button { width: 100%; display: block; }
+}
+
+/* Forms */
+form { width: 100%; }
+
+/* Small device tweaks */
+@media (max-width: 900px) {
+  .container, .app-wrapper { padding: 12px; max-width: 720px; }
+}
+
+@media (max-width: 600px) {
+  .container, .app-wrapper { padding: 10px; max-width: 100%; }
+  .row { gap: 12px; }
+}
+
+/* Component-specific responsive tweaks to ensure consistent behavior */
+.form-container1, .deliveryContainer, .donation-info, .hero, .container, .site-container {
+  width: 100%;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 12px;
+  padding-right: 12px;
+  box-sizing: border-box;
+}
+
+@media (min-width: 900px) {
+  .form-container1 { max-width: 720px; }
+  .deliveryContainer { max-width: 520px; }
+}
+
+/* Ensure fixed-position side menus don't overflow on small screens */
+.right-menu { max-width: 240px; }
+@media (max-width: 600px) { .right-menu { display: none; } }
+
+/* Improve transitions and text scaling for components */
+.form-container1, .deliveryContainer, .hero, .donation-info {
+  transition: box-shadow 240ms ease, transform 240ms ease;
+  will-change: transform, box-shadow;
+}
+
+.form-container1 h1, .sectionTitle {
+  font-size: clamp(1.2rem, 2.2vw, 1.8rem);
+}
+
+.btn, .cta-button {
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+  will-change: transform, box-shadow;
+}
+
+/* Make text inside cards scale fluidly */
+.form-container1, .deliveryContainer { font-size: clamp(0.95rem, 1.2vw, 1.05rem); }
+
+/* Minimal animation helpers for hover/focus */
+.cta-button:focus, .btn:focus { outline: 3px solid rgba(220,38,38,0.12); }
+
 
 

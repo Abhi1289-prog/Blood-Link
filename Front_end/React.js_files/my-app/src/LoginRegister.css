@@ -254,6 +254,87 @@ a:hover {
   margin-bottom: 14px;
 }
 
+.verificationOtpPanel {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 16px;
+  border: 1px solid #f1caca;
+  border-radius: 12px;
+  background: #fff8f7;
+}
+
+.verificationOtpLabel {
+  margin-bottom: 6px;
+  color: #5b2525;
+  font-size: 0.95rem;
+}
+
+.verificationOtpInput {
+  width: 100%;
+  height: 48px;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0 14px;
+  border: 1px solid #d9bcbc;
+  border-radius: 8px;
+  background: #fff;
+  color: #222;
+  font-size: 1.1rem;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+.verificationOtpInput:focus {
+  border-color: #dc2626;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.12);
+}
+
+.verificationOtpActions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.verificationVerifyButton,
+.verificationResendButton {
+  min-height: 42px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.verificationVerifyButton {
+  border: 1px solid #b91c1c;
+  background: #b91c1c;
+  color: #fff;
+}
+
+.verificationVerifyButton:hover:not(:disabled) {
+  background: #991b1b;
+}
+
+.verificationResendButton {
+  border: 1px solid #d6a5a5;
+  background: #fff;
+  color: #9f2424;
+}
+
+.verificationResendButton:hover:not(:disabled) {
+  border-color: #b91c1c;
+  background: #fff1f0;
+}
+
+.verificationVerifyButton:disabled,
+.verificationResendButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
 input[type="radio"] + span,
 input[type="checkbox"] + span {
   margin-left: 8px;

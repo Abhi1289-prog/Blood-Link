@@ -1,10 +1,9 @@
 const mongoose=require('mongoose');
 const bcrypt=require('bcrypt');
 const numberVerificationTokenSchema=mongoose.Schema({
-    owner:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"user",
-        required:false
+    number:{
+        type:String,
+        required:true
     },
 token:{
     type:String,

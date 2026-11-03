@@ -3,6 +3,13 @@
   "version": "1.0.0",
   "description": "connecting donor and recipient",
   "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node app.js"
+  },
+  "engines": {
+    "node": "18.x"
+  },
   "dependencies": {
     "@sendgrid/mail": "^8.1.6",
     "@tensorflow/tfjs": "^4.22.0",

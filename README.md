@@ -49,7 +49,7 @@ Blood Link is a blood donation support system built with a Node.js/Express backe
    ```
 3. Create a `.env` file in `back_end/` with the following values:
    ```env
-   Mongo_URI=<your_mongodb_connection_string>
+   MONGO_URI=<your_mongodb_connection_string>
    CLIENT_ID=<your_gmail_oauth_client_id>
    CLIENT_SECRET=<your_gmail_oauth_client_secret>
    REDIRECT_URI=<your_gmail_oauth_redirect_uri>

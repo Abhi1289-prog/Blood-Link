@@ -778,13 +778,28 @@ className='cta-button'
           <>
             <button type="button" className='cta-button' style={{  width: "30%", margin: "10px auto", display: "block" }}  onClick={sendEmailOTP}>Send Email OTP</button>
             {showEmailOTP && (
-              <>
-                <input placeholder="Enter Email OTP"   value={emailOTP} onChange={e => setEmailOTP(e.target.value)} required />
-                <button type="button" style={{ width: "30%", margin: "10px auto", display: "block" }} onClick={verifyEmailOTP}>Verify Email OTP</button>
-                <button type="button" style={{  width: "40%", margin: "10px auto", display: "block" }} onClick={sendEmailOTP} disabled={!canResendEmailOTP}>
+              <div className="verificationOtpPanel">
+                <label className="verificationOtpLabel" htmlFor="register-email-otp">Verification code</label>
+                <input
+                  id="register-email-otp"
+                  className="verificationOtpInput"
+                  type="text"
+                  inputMode="numeric"
+                  autoComplete="one-time-code"
+                  pattern="[0-9]{6}"
+                  maxLength="6"
+                  placeholder="Enter 6-digit code"
+                  value={emailOTP}
+                  onChange={e => setEmailOTP(e.target.value.replace(/\D/g, ''))}
+                  required
+                />
+                <div className="verificationOtpActions">
+                  <button type="button" className="verificationVerifyButton" onClick={verifyEmailOTP} disabled={emailOTP.length !== 6}>Verify email</button>
+                  <button type="button" className="verificationResendButton" onClick={ResendEmailOTP} disabled={!canResendEmailOTP}>
                   {canResendEmailOTP ? 'Resend OTP' : `Resend in ${emailResendTimer}s`}
-                </button>
-              </>
+                  </button>
+                </div>
+              </div>
             )}
           </>
         )}
@@ -798,13 +813,28 @@ className='cta-button'
           <>
             <button type="button" className='cta-button'  style={{width: "30%", margin: "10px auto", display: "block" }} onClick={sendPhoneOTP}>Send Phone OTP</button>
             {showPhoneOTP && (
-              <>
-                <input type="" placeholder="Enter Phone OTP"  value={phoneOTP} onChange={e => setPhoneOTP(e.target.value)} required />
-                <button type="button" style={{  width: "30%", margin: "10px auto", display: "block" }} onClick={verifyPhoneOTP}>Verify Phone OTP</button>
-                <button type="button"  style={{  width: "40%", margin: "10px auto", display: "block" }} onClick={sendPhoneOTP} disabled={!canResendPhoneOTP}>
+              <div className="verificationOtpPanel">
+                <label className="verificationOtpLabel" htmlFor="register-phone-otp">Verification code</label>
+                <input
+                  id="register-phone-otp"
+                  className="verificationOtpInput"
+                  type="text"
+                  inputMode="numeric"
+                  autoComplete="one-time-code"
+                  pattern="[0-9]{6}"
+                  maxLength="6"
+                  placeholder="Enter 6-digit code"
+                  value={phoneOTP}
+                  onChange={e => setPhoneOTP(e.target.value.replace(/\D/g, ''))}
+                  required
+                />
+                <div className="verificationOtpActions">
+                  <button type="button" className="verificationVerifyButton" onClick={verifyPhoneOTP} disabled={phoneOTP.length !== 6}>Verify number</button>
+                  <button type="button" className="verificationResendButton" onClick={ResendPhoneOTP} disabled={!canResendPhoneOTP}>
                   {canResendPhoneOTP ? 'Resend OTP' : `Resend in ${phoneResendTimer}s`}
-                </button>
-              </>
+                  </button>
+                </div>
+              </div>
             )}
           </>
         )}

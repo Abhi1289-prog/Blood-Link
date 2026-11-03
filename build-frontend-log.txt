@@ -1,0 +1,74 @@
+﻿docker : --progress is a global compose flag, better use `docker compose 
+--progress xx build ...
+At line:1 char:1
++ docker compose build frontend --progress=plain 2>&1 | Out-File -FileP ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (--progress is a...ss xx build ... 
+   :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+ Image saro_and_abi_project-backend Building 
+ Image saro_and_abi_project-frontend Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.09kB done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 528B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/nginx:stable-alpine
+#3 ...
+
+#4 [internal] load metadata for docker.io/library/node:18-alpine
+#4 DONE 1.5s
+
+#3 [internal] load metadata for docker.io/library/nginx:stable-alpine
+#3 DONE 3.6s
+
+#5 [internal] load .dockerignore
+#5 transferring context: 128B done
+#5 DONE 0.0s
+
+#6 [internal] load build context
+#6 transferring context: 6.03kB done
+#6 DONE 0.0s
+
+#7 [builder 1/6] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
+#7 resolve docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e 0.0s done
+#7 DONE 0.0s
+
+#8 [builder 2/6] WORKDIR /app
+#8 CACHED
+
+#9 [stage-1 1/3] FROM docker.io/library/nginx:stable-alpine@sha256:ca19b13430b7e5f22033669fca004b2e4b02e53851207ee6f076f00f8cd3fb94
+#9 resolve docker.io/library/nginx:stable-alpine@sha256:ca19b13430b7e5f22033669fca004b2e4b02e53851207ee6f076f00f8cd3fb94 0.0s done
+#9 CACHED
+
+#10 [builder 3/6] COPY package*.json ./
+#10 DONE 0.0s
+
+#11 [builder 4/6] RUN npm ci --silent
+#11 ERROR: process "/bin/sh -c npm ci --silent" did not complete successfully: exit code: 1
+------
+ > [builder 4/6] RUN npm ci --silent:
+------
+Dockerfile:5
+
+--------------------
+
+   3 |     WORKDIR /app
+
+   4 |     COPY package*.json ./
+
+   5 | >>> RUN npm ci --silent
+
+   6 |     COPY . .
+
+   7 |     RUN npm run build
+
+--------------------
+
+failed to solve: process "/bin/sh -c npm ci --silent" did not complete 
+successfully: exit code: 1
+

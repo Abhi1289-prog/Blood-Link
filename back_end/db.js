@@ -1,13 +1,14 @@
 const mongoose = require("mongoose");
 
+const mongoUri = process.env.MONGO_URI || process.env.Mongo_URI;
+
 const connectDB = async () => {
-  // Validate Mongo_URI exists
-  if (!process.env.Mongo_URI) {
+  if (!mongoUri) {
     console.error("❌ MONGO_URI is not defined in environment variables");
     process.exit(1);
   }
 
-  const CONNECTION_TIMEOUT = 2 * 60 * 1000; // 2 minutes (120000 ms)
+  const CONNECTION_TIMEOUT = 2 * 60 * 1000;
 
   const timeout = setTimeout(() => {
     console.error("❌ MongoDB connection timed out (2 minutes). Exiting...");
@@ -15,26 +16,33 @@ const connectDB = async () => {
   }, CONNECTION_TIMEOUT);
 
   try {
-    await mongoose.connect(process.env.Mongo_URI, {
-      serverSelectionTimeoutMS: 2 * 60 * 1000, // MongoDB internal timeout
+    await mongoose.connect(mongoUri, {
+      serverSelectionTimeoutMS: CONNECTION_TIMEOUT,
+      socketTimeoutMS: 30000,
+      family: 4,
     });
 
     clearTimeout(timeout);
     console.log("✅ MongoDB Connected Successfully");
   } catch (error) {
     clearTimeout(timeout);
+
     console.error("❌ MongoDB Connection Error:", error.message);
-    // Hide password in URI for security
-    const maskedUri = process.env.Mongo_URI?.replace(/:[^@]+@/, ":***@") || "undefined";
+
+    const maskedUri = mongoUri.replace(
+      /:[^@]+@/,
+      ":***@"
+    );
+
     console.error("❌ Connection Details:", {
       uri: maskedUri,
       timeout: CONNECTION_TIMEOUT
     });
+
     process.exit(1);
   }
 };
 
-// Auto-connect when this module is loaded
 connectDB();
 
 module.exports = connectDB;

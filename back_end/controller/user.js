@@ -9,8 +9,8 @@ const { sendError, generateRandomByte } = require('../utils/helper');
 
 exports.createUser = async(req, res) => {
    const {name, email, password, phone_number,username} = req.body;
-   const olduser = await user.findOne({email});
-   if(olduser) return sendError(res, 'This email is already used');
+   const olduser = await user.findOne({username});
+   if(olduser) return sendError(res, 'This username is already exist');
    const newuser = new user({name, email, password, phone_number,username})
    await newuser.save();
    res.status(201).json({ message: "User created successfully" });

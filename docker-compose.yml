@@ -1,0 +1,23 @@
+services:
+  backend:
+    build:
+      context: ./back_end
+    container_name: bloodlink-backend
+    ports:
+      - '5000:5000'
+    env_file:
+      - ./back_end/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./Front_end/React.js_files/my-app
+      dockerfile: Dockerfile
+    container_name: bloodlink-frontend
+    ports:
+      - '8080:80'
+    depends_on:
+      - backend
+    restart: unless-stopped
